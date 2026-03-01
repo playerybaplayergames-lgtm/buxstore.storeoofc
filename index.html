@@ -7,16 +7,17 @@
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-/* Fundo com sua imagem */
+/* Fundo com imagem */
 body {
-  background: url('background.jpg') no-repeat center center fixed;
+  background-image: url("./background.jpg");
   background-size: cover;
-  position: relative;
+  background-position: center;
+  background-attachment: fixed;
   color: white;
   overflow-x: hidden;
 }
 
-/* Camada escura para melhorar leitura */
+/* Camada escura */
 body::before {
   content: "";
   position: fixed;
@@ -25,7 +26,7 @@ body::before {
   z-index: -1;
 }
 
-/* Partículas douradas */
+/* Partículas */
 .glow {
   position: fixed;
   width: 4px;
@@ -88,17 +89,31 @@ body::before {
 
 </section>
 
-<!-- Modal Pix -->
-<div id="pixModal" class="fixed inset-0 bg-black bg-opacity-80 hidden flex items-center justify-center">
-  <div class="bg-gray-900 p-8 rounded-2xl text-center max-w-sm">
+<!-- Modal Pix com animação -->
+<div id="pixModal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center transition-opacity duration-300">
+
+  <div id="pixContent"
+       class="bg-gray-900 p-8 rounded-2xl text-center max-w-sm transform scale-75 opacity-0 transition-all duration-300">
+
     <h3 class="text-xl font-bold mb-4">Pagamento via Pix</h3>
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020126580014BR.GOV.BCB.PIX0136f897d3b2-432b-4d96-a881-321949f4f2a352040000530398654047.005802BR5925Eduardo Gabriel de Andrad6009SAO PAULO621405109ImWx845Dx63046070" class="mx-auto mb-4">
+
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020126580014BR.GOV.BCB.PIX0136f897d3b2-432b-4d96-a881-321949f4f2a352040000530398654047.005802BR5925Eduardo Gabriel de Andrad6009SAO PAULO621405109ImWx845Dx63046070"
+         class="mx-auto mb-4 rounded-lg">
+
     <textarea id="pixCode" class="w-full text-black p-2 rounded text-xs">
 00020126580014BR.GOV.BCB.PIX0136f897d3b2-432b-4d96-a881-321949f4f2a352040000530398654047.005802BR5925Eduardo Gabriel de Andrad6009SAO PAULO621405109ImWx845Dx63046070
     </textarea>
-    <button onclick="copyPix()" class="bg-yellow-400 text-black px-4 py-2 mt-3 rounded-xl font-bold">Copiar Código Pix</button>
+
+    <button onclick="copyPix()" class="bg-yellow-400 text-black px-4 py-2 mt-3 rounded-xl font-bold hover:scale-105 transition">
+      Copiar Código Pix
+    </button>
+
     <br><br>
-    <button onclick="closePix()" class="text-red-400">Fechar</button>
+
+    <button onclick="closePix()" class="text-red-400">
+      Fechar
+    </button>
+
   </div>
 </div>
 
@@ -112,12 +127,33 @@ body::before {
 <div id="notification"></div>
 
 <script>
+/* Modal animado */
 function openPix() {
-  document.getElementById("pixModal").classList.remove("hidden");
+  const modal = document.getElementById("pixModal");
+  const content = document.getElementById("pixContent");
+
+  modal.classList.remove("hidden");
+  modal.classList.add("flex");
+
+  setTimeout(() => {
+    content.classList.remove("scale-75", "opacity-0");
+    content.classList.add("scale-100", "opacity-100");
+  }, 50);
 }
+
 function closePix() {
-  document.getElementById("pixModal").classList.add("hidden");
+  const modal = document.getElementById("pixModal");
+  const content = document.getElementById("pixContent");
+
+  content.classList.remove("scale-100", "opacity-100");
+  content.classList.add("scale-75", "opacity-0");
+
+  setTimeout(() => {
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+  }, 300);
 }
+
 function copyPix() {
   let copyText = document.getElementById("pixCode");
   copyText.select();
