@@ -137,5 +137,16 @@ function mostrarNotificacao() {
 // Mostrar notificação a cada 8 segundos
 setInterval(mostrarNotificacao, 8000);
 </script>
+  <script>
+// Criar partículas brilhantes
+for (let i = 0; i < 25; i++) {
+  let glow = document.createElement("div");
+  glow.className = "glow";
+  glow.style.left = Math.random() * 100 + "vw";
+  glow.style.animationDuration = (5 + Math.random() * 10) + "s";
+  glow.style.opacity = Math.random();
+  document.body.appendChild(glow);
+}
+  </script>
 </body>
 </html>
