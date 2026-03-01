@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head><style>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuxStore</title>
+<script src="https://cdn.tailwindcss.com"></script>
 
-  <meta charset="UTF-8">
-  <title>BuxStore</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-/* Fundo animado com brilho */
+/* Fundo animado */
 body {
   background: linear-gradient(-45deg, #0f172a, #111827, #1e293b, #0f172a);
   background-size: 400% 400%;
   animation: gradientBG 12s ease infinite;
-  overflow-x: hidden;
 }
 
-/* Animação do gradiente */
 @keyframes gradientBG {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Partículas brilhantes */
+/* Partículas */
 .glow {
   position: fixed;
   width: 4px;
@@ -35,149 +33,104 @@ body {
 }
 
 @keyframes float {
-  from {
-    transform: translateY(100vh);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(-10vh);
-    opacity: 1;
-  }
+  from { transform: translateY(100vh); opacity: 0; }
+  to { transform: translateY(-10vh); opacity: 1; }
 }
-</style></head>
-<body class="bg-gray-900 text-white">
 
-<header class="bg-gray-800 shadow-lg">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-    <h1 class="text-2xl font-bold text-yellow-400">BUXSTORE</h1>
-  </div>
+/* Notificação */
+#notification {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #111827;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(250,204,21,0.5);
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body class="text-white">
+
+<header class="bg-gray-900 shadow-lg p-6 text-center">
+  <h1 class="text-3xl font-bold text-yellow-400">BUXSTORE</h1>
 </header>
 
-<section class="text-center py-20 px-6">
-  <h2 class="text-4xl md:text-5xl font-extrabold mb-6">
-    Compre Robux Instantaneamente ⚡
-  </h2>
+<section class="text-center py-12">
+  <h2 class="text-4xl font-extrabold">Compre Robux Instantaneamente ⚡</h2>
 </section>
 
-<section class="max-w-6xl mx-auto px-6 py-16">
-  <h3 class="text-3xl font-bold text-center mb-12">Pacotes Disponíveis</h3>
+<section class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8 px-6">
 
-  <div class="grid md:grid-cols-3 gap-8">
-
-    <div class="bg-gray-800 rounded-2xl p-8 text-center shadow-xl">
-      <h4 class="text-xl font-bold mb-4">500 Robux </h4>
-      <p class="text-3xl font-extrabold text-yellow-400 mb-6">R$ 7,00</p>
-      <button onclick="abrirPix()" class="bg-yellow-400 text-black px-6 py-2 rounded-lg font-semibold hover:bg-yellow-300 transition">
-        Pagar com Pix
-      </button>
-    </div>
-
-    <div class="bg-gray-800 rounded-2xl p-8 text-center shadow-xl">
-      <h4 class="text-xl font-bold mb-4">1200 Robux </h4>
-      <p class="text-3xl font-extrabold text-yellow-400 mb-6">R$ 22,90</p>
-      <button onclick="abrirPix()" class="bg-yellow-400 text-black px-6 py-2 rounded-lg font-semibold hover:bg-yellow-300 transition">
-        Pagar com Pix
-      </button>
-    </div>
-
-    <div class="bg-gray-800 rounded-2xl p-8 text-center shadow-xl">
-      <h4 class="text-xl font-bold mb-4">3000 Robux </h4>
-      <p class="text-3xl font-extrabold text-yellow-400 mb-6">R$ 68,00</p>
-      <button onclick="abrirPix()" class="bg-yellow-400 text-black px-6 py-2 rounded-lg font-semibold hover:bg-yellow-300 transition">
-        Pagar com Pix
-      </button>
-    </div>
-
+  <div class="bg-gray-800 p-6 rounded-2xl text-center shadow-xl">
+    <h3 class="text-xl font-bold mb-4">500 Robux</h3>
+    <p class="mb-4">R$ 7,00</p>
+    <button onclick="openPix()" class="bg-yellow-400 text-black px-4 py-2 rounded-xl font-bold">Pagar com Pix</button>
   </div>
+
+  <div class="bg-gray-800 p-6 rounded-2xl text-center shadow-xl">
+    <h3 class="text-xl font-bold mb-4">1200 Robux</h3>
+    <p class="mb-4">R$ 22,90</p>
+    <button onclick="openPix()" class="bg-yellow-400 text-black px-4 py-2 rounded-xl font-bold">Pagar com Pix</button>
+  </div>
+
+  <div class="bg-gray-800 p-6 rounded-2xl text-center shadow-xl">
+    <h3 class="text-xl font-bold mb-4">3000 Robux</h3>
+    <p class="mb-4">R$ 68,00</p>
+    <button onclick="openPix()" class="bg-yellow-400 text-black px-4 py-2 rounded-xl font-bold">Pagar com Pix</button>
+  </div>
+
 </section>
 
 <!-- Modal Pix -->
-<div id="pixModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center">
-  <div class="bg-gray-800 p-8 rounded-2xl text-center max-w-md w-full">
-    <h3 class="text-2xl font-bold mb-4">Pagamento via Pix</h3>
-
-    <p class="mb-4 text-green-400 font-semibold">
-      Escaneie o QR Code abaixo:
-    </p>
-
-    <!-- QR Code com seu payload Pix -->
-    <img 
-      src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=00020126580014BR.GOV.BCB.PIX0136f897d3b2-432b-4d96-a881-321949f4f2a352040000530398654047.005802BR5925Eduardo%20Gabriel%20de%20Andrad6009SAO%20PAULO621405109ImWx845Dx63046070"
-      alt="QR Code Pix"
-      class="mx-auto mb-4 rounded-lg">
-
-    <p class="text-sm text-gray-300 mb-2">Código Pix Copia e Cola:</p>
-
-    <textarea id="codigoPix" class="w-full bg-gray-700 p-3 rounded-lg text-xs mb-4" rows="4" readonly>
+<div id="pixModal" class="fixed inset-0 bg-black bg-opacity-70 hidden flex items-center justify-center">
+  <div class="bg-gray-900 p-8 rounded-2xl text-center max-w-sm">
+    <h3 class="text-xl font-bold mb-4">Pagamento via Pix</h3>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020126580014BR.GOV.BCB.PIX0136f897d3b2-432b-4d96-a881-321949f4f2a352040000530398654047.005802BR5925Eduardo Gabriel de Andrad6009SAO PAULO621405109ImWx845Dx63046070" class="mx-auto mb-4">
+    <textarea id="pixCode" class="w-full text-black p-2 rounded text-xs">
 00020126580014BR.GOV.BCB.PIX0136f897d3b2-432b-4d96-a881-321949f4f2a352040000530398654047.005802BR5925Eduardo Gabriel de Andrad6009SAO PAULO621405109ImWx845Dx63046070
     </textarea>
-
-    <button onclick="copiarPix()" class="bg-yellow-400 text-black px-6 py-2 rounded-lg font-semibold hover:bg-yellow-300 transition mb-2">
-      Copiar Código Pix
-    </button>
-
-    <button onclick="fecharPix()" class="block w-full mt-2 text-red-400">
-      Fechar
-    </button>
+    <button onclick="copyPix()" class="bg-yellow-400 text-black px-4 py-2 mt-3 rounded-xl font-bold">Copiar Código Pix</button>
+    <br><br>
+    <button onclick="closePix()" class="text-red-400">Fechar</button>
   </div>
 </div>
 
-<footer class="bg-gray-900 text-gray-400 text-center py-6 border-t border-gray-700">
-  © 2026 BuxStore
+<!-- Contatos -->
+<footer class="text-center mt-16 mb-10 space-y-2">
+  <p>🔥 TikTok: rbxbaratooofc</p>
+  <p>✉️ Email: Robuxbarato.gmail</p>
+  <p>🎮 Discord: rbxbarato</p>
+  <p class="text-gray-400 mt-4">© 2026 BuxStore</p>
 </footer>
 
+<!-- Notificação Fake -->
+<div id="notification"></div>
+
 <script>
-function abrirPix() {
+// Abrir / Fechar modal
+function openPix() {
   document.getElementById("pixModal").classList.remove("hidden");
 }
-
-function fecharPix() {
+function closePix() {
   document.getElementById("pixModal").classList.add("hidden");
 }
-
-function copiarPix() {
-  const texto = document.getElementById("codigoPix");
-  texto.select();
+function copyPix() {
+  let copyText = document.getElementById("pixCode");
+  copyText.select();
   document.execCommand("copy");
-  alert("Código Pix copiado com sucesso!");
-}
-</script>
-<!-- Informações de Contato -->
-<div class="fixed bottom-4 right-4 bg-gray-800 bg-opacity-95 text-white p-4 rounded-xl shadow-2xl text-sm border border-yellow-400">
-  <p class="mb-1">🔥 <strong>TikTok:</strong> rbxbaratooofc</p>
-  <p class="mb-1">✉️ <strong>Email:</strong> Robuxbarato.gmail</p>
-  <p>💬 <strong>Discord:</strong> rbxbarato</p>
-</div>
-  <!-- Notificação Fake de Compra -->
-<div id="notificacaoCompra" class="fixed bottom-6 left-6 bg-gray-800 text-white px-4 py-3 rounded-xl shadow-2xl border border-green-400 text-sm hidden">
-  <span id="textoNotificacao"></span>
-</div>
-
-<script>
-const nomes = ["João", "Lucas", "Pedro", "Maria", "Ana", "Carlos", "Rafael", "Bruno", "Gabriel", "Fernanda"];
-const valores = ["500", "1200", "3000"];
-
-function mostrarNotificacao() {
-  const nomeAleatorio = nomes[Math.floor(Math.random() * nomes.length)];
-  const valorAleatorio = valores[Math.floor(Math.random() * valores.length)];
-  
-  const notificacao = document.getElementById("notificacaoCompra");
-  const texto = document.getElementById("textoNotificacao");
-  
-  texto.innerHTML = `🛒 ${nomeAleatorio} acabou de comprar <strong>${valorAleatorio} Robux</strong>!`;
-  
-  notificacao.classList.remove("hidden");
-  
-  setTimeout(() => {
-    notificacao.classList.add("hidden");
-  }, 4000);
+  alert("Código Pix copiado!");
 }
 
-// Mostrar notificação a cada 8 segundos
-setInterval(mostrarNotificacao, 8000);
-</script>
-<script>
-// Criar partículas brilhantes
+// Partículas
 for (let i = 0; i < 25; i++) {
   let glow = document.createElement("div");
   glow.className = "glow";
@@ -186,6 +139,25 @@ for (let i = 0; i < 25; i++) {
   glow.style.opacity = Math.random();
   document.body.appendChild(glow);
 }
+
+// Notificação fake
+const names = ["Rafael", "Lucas", "Marcos", "João", "Pedro", "Gabriel"];
+const amounts = ["500 Robux", "1200 Robux", "3000 Robux"];
+
+function showNotification() {
+  const notification = document.getElementById("notification");
+  const randomName = names[Math.floor(Math.random() * names.length)];
+  const randomAmount = amounts[Math.floor(Math.random() * amounts.length)];
+  notification.innerHTML = "🛒 " + randomName + " acabou de comprar " + randomAmount + "!";
+  notification.style.display = "block";
+
+  setTimeout(() => {
+    notification.style.display = "none";
+  }, 4000);
+}
+
+setInterval(showNotification, 8000);
 </script>
+
 </body>
 </html>
