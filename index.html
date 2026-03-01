@@ -1,6 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
+<head><style>
+/* Fundo animado com brilho */
+body {
+  background: linear-gradient(-45deg, #0f172a, #111827, #1e293b, #0f172a);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+  overflow-x: hidden;
+}
+
+/* Animação do gradiente */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Partículas brilhantes */
+.glow {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: #facc15;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #facc15, 0 0 20px #facc15;
+  animation: float 10s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(-10vh);
+    opacity: 1;
+  }
+}
+</style>
   <meta charset="UTF-8">
   <title>BuxStore</title>
   <script src="https://cdn.tailwindcss.com"></script>
