@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>BuxStore</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="bg-gray-900 text-white">
+
+<header class="bg-gray-800 shadow-lg">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-yellow-400">BUXSTORE</h1>
+  </div>
+</header>
+
+<section class="text-center py-20 px-6">
+  <h2 class="text-4xl md:text-5xl font-extrabold mb-6">
+    Compre Créditos Instantaneamente ⚡
+  </h2>
+</section>
+
+<section class="max-w-6xl mx-auto px-6 py-16">
+  <h3 class="text-3xl font-bold text-center mb-12">Pacotes Disponíveis</h3>
+
+  <div class="grid md:grid-cols-3 gap-8">
+
+    <div class="bg-gray-800 rounded-2xl p-8 text-center shadow-xl">
+      <h4 class="text-xl font-bold mb-4">500 Créditos</h4>
+      <p class="text-3xl font-extrabold text-yellow-400 mb-6">R$ 19,90</p>
+      <button onclick="abrirPix()" class="bg-yellow-400 text-black px-6 py-2 rounded-lg font-semibold hover:bg-yellow-300 transition">
+        Pagar com Pix
+      </button>
+    </div>
+
+    <div class="bg-gray-800 rounded-2xl p-8 text-center shadow-xl">
+      <h4 class="text-xl font-bold mb-4">1200 Créditos</h4>
+      <p class="text-3xl font-extrabold text-yellow-400 mb-6">R$ 39,90</p>
+      <button onclick="abrirPix()" class="bg-yellow-400 text-black px-6 py-2 rounded-lg font-semibold hover:bg-yellow-300 transition">
+        Pagar com Pix
+      </button>
+    </div>
+
+    <div class="bg-gray-800 rounded-2xl p-8 text-center shadow-xl">
+      <h4 class="text-xl font-bold mb-4">3000 Créditos</h4>
+      <p class="text-3xl font-extrabold text-yellow-400 mb-6">R$ 79,90</p>
+      <button onclick="abrirPix()" class="bg-yellow-400 text-black px-6 py-2 rounded-lg font-semibold hover:bg-yellow-300 transition">
+        Pagar com Pix
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- Modal Pix -->
+<div id="pixModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center">
+  <div class="bg-gray-800 p-8 rounded-2xl text-center max-w-md w-full">
+    <h3 class="text-2xl font-bold mb-4">Pagamento via Pix</h3>
+
+    <p class="mb-4 text-green-400 font-semibold">
+      Escaneie o QR Code abaixo:
+    </p>
+
+    <!-- QR Code com seu payload Pix -->
+    <img 
+      src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=00020126580014BR.GOV.BCB.PIX0136f897d3b2-432b-4d96-a881-321949f4f2a352040000530398654047.005802BR5925Eduardo%20Gabriel%20de%20Andrad6009SAO%20PAULO621405109ImWx845Dx63046070"
+      alt="QR Code Pix"
+      class="mx-auto mb-4 rounded-lg">
+
+    <p class="text-sm text-gray-300 mb-2">Código Pix Copia e Cola:</p>
+
+    <textarea id="codigoPix" class="w-full bg-gray-700 p-3 rounded-lg text-xs mb-4" rows="4" readonly>
+00020126580014BR.GOV.BCB.PIX0136f897d3b2-432b-4d96-a881-321949f4f2a352040000530398654047.005802BR5925Eduardo Gabriel de Andrad6009SAO PAULO621405109ImWx845Dx63046070
+    </textarea>
+
+    <button onclick="copiarPix()" class="bg-yellow-400 text-black px-6 py-2 rounded-lg font-semibold hover:bg-yellow-300 transition mb-2">
+      Copiar Código Pix
+    </button>
+
+    <button onclick="fecharPix()" class="block w-full mt-2 text-red-400">
+      Fechar
+    </button>
+  </div>
+</div>
+
+<footer class="bg-gray-900 text-gray-400 text-center py-6 border-t border-gray-700">
+  © 2026 BuxStore
+</footer>
+
+<script>
+function abrirPix() {
+  document.getElementById("pixModal").classList.remove("hidden");
+}
+
+function fecharPix() {
+  document.getElementById("pixModal").classList.add("hidden");
+}
+
+function copiarPix() {
+  const texto = document.getElementById("codigoPix");
+  texto.select();
+  document.execCommand("copy");
+  alert("Código Pix copiado com sucesso!");
+}
+</script>
+
+</body>
+</html>
