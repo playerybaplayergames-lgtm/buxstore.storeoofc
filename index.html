@@ -109,5 +109,33 @@ function copiarPix() {
   <p class="mb-1">✉️ <strong>Email:</strong> Robuxbarato.gmail</p>
   <p>💬 <strong>Discord:</strong> rbxbarato</p>
 </div>
+  <!-- Notificação Fake de Compra -->
+<div id="notificacaoCompra" class="fixed bottom-6 left-6 bg-gray-800 text-white px-4 py-3 rounded-xl shadow-2xl border border-green-400 text-sm hidden">
+  <span id="textoNotificacao"></span>
+</div>
+
+<script>
+const nomes = ["João", "Lucas", "Pedro", "Maria", "Ana", "Carlos", "Rafael", "Bruno", "Gabriel", "Fernanda"];
+const valores = ["500", "1200", "3000"];
+
+function mostrarNotificacao() {
+  const nomeAleatorio = nomes[Math.floor(Math.random() * nomes.length)];
+  const valorAleatorio = valores[Math.floor(Math.random() * valores.length)];
+  
+  const notificacao = document.getElementById("notificacaoCompra");
+  const texto = document.getElementById("textoNotificacao");
+  
+  texto.innerHTML = `🛒 ${nomeAleatorio} acabou de comprar <strong>${valorAleatorio} Robux</strong>!`;
+  
+  notificacao.classList.remove("hidden");
+  
+  setTimeout(() => {
+    notificacao.classList.add("hidden");
+  }, 4000);
+}
+
+// Mostrar notificação a cada 8 segundos
+setInterval(mostrarNotificacao, 8000);
+</script>
 </body>
 </html>
