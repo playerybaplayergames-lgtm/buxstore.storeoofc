@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BuxStore</title>
+
+<!-- Fonte Gamer -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
@@ -24,6 +28,7 @@ body::before {
   z-index: -1;
 }
 
+/* Partículas */
 .glow {
   position: fixed;
   width: 4px;
@@ -40,6 +45,7 @@ body::before {
   to { transform: translateY(-10vh); opacity: 1; }
 }
 
+/* Notificação */
 #notification {
   position: fixed;
   bottom: 20px;
@@ -56,7 +62,10 @@ body::before {
 <body>
 
 <header class="bg-black bg-opacity-70 p-6 text-center shadow-lg">
-  <h1 class="text-3xl font-bold text-yellow-400">BUXSTORE</h1>
+  <h1 class="text-4xl font-extrabold text-yellow-400 tracking-widest"
+      style="font-family: 'Orbitron', sans-serif;">
+      BUXSTORE
+  </h1>
 </header>
 
 <section class="text-center py-12">
@@ -67,14 +76,11 @@ body::before {
 
   <!-- CARD 1 -->
   <div class="relative bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl text-center shadow-2xl border border-yellow-400/30 hover:scale-105 transition duration-300 overflow-hidden">
-
     <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Roblox_Logo_2022.svg"
          class="absolute top-4 right-4 w-12 opacity-20">
-
     <h3 class="text-xl font-bold mb-2">500 Robux</h3>
     <p class="text-yellow-400 text-lg font-semibold mb-2">R$ 7,00</p>
     <p class="text-sm text-gray-400 mb-4">⭐ 347 avaliações</p>
-
     <button onclick="openPix()" class="bg-yellow-400 text-black px-4 py-2 rounded-xl font-bold hover:scale-110 transition">
       Pagar com Pix
     </button>
@@ -82,14 +88,11 @@ body::before {
 
   <!-- CARD 2 -->
   <div class="relative bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl text-center shadow-2xl border border-yellow-400/30 hover:scale-105 transition duration-300 overflow-hidden">
-
     <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Roblox_Logo_2022.svg"
          class="absolute top-4 right-4 w-12 opacity-20">
-
     <h3 class="text-xl font-bold mb-2">1200 Robux</h3>
     <p class="text-yellow-400 text-lg font-semibold mb-2">R$ 22,90</p>
     <p class="text-sm text-gray-400 mb-4">⭐ 892 avaliações</p>
-
     <button onclick="openPix()" class="bg-yellow-400 text-black px-4 py-2 rounded-xl font-bold hover:scale-110 transition">
       Pagar com Pix
     </button>
@@ -97,14 +100,11 @@ body::before {
 
   <!-- CARD 3 -->
   <div class="relative bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl text-center shadow-2xl border border-yellow-400/30 hover:scale-105 transition duration-300 overflow-hidden">
-
     <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Roblox_Logo_2022.svg"
          class="absolute top-4 right-4 w-12 opacity-20">
-
     <h3 class="text-xl font-bold mb-2">3000 Robux</h3>
     <p class="text-yellow-400 text-lg font-semibold mb-2">R$ 68,00</p>
     <p class="text-sm text-gray-400 mb-4">⭐ 1.247 avaliações</p>
-
     <button onclick="openPix()" class="bg-yellow-400 text-black px-4 py-2 rounded-xl font-bold hover:scale-110 transition">
       Pagar com Pix
     </button>
@@ -112,9 +112,8 @@ body::before {
 
 </section>
 
-<!-- Modal Pix Animado -->
+<!-- Modal Pix -->
 <div id="pixModal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center transition-opacity duration-300">
-
   <div id="pixContent"
        class="bg-gray-900 p-8 rounded-2xl text-center max-w-sm transform scale-75 opacity-0 transition-all duration-300">
 
@@ -132,10 +131,7 @@ body::before {
     </button>
 
     <br><br>
-
-    <button onclick="closePix()" class="text-red-400">
-      Fechar
-    </button>
+    <button onclick="closePix()" class="text-red-400">Fechar</button>
 
   </div>
 </div>
@@ -153,23 +149,19 @@ body::before {
 function openPix() {
   const modal = document.getElementById("pixModal");
   const content = document.getElementById("pixContent");
-
   modal.classList.remove("hidden");
   modal.classList.add("flex");
-
   setTimeout(() => {
-    content.classList.remove("scale-75", "opacity-0");
-    content.classList.add("scale-100", "opacity-100");
+    content.classList.remove("scale-75","opacity-0");
+    content.classList.add("scale-100","opacity-100");
   }, 50);
 }
 
 function closePix() {
   const modal = document.getElementById("pixModal");
   const content = document.getElementById("pixContent");
-
-  content.classList.remove("scale-100", "opacity-100");
-  content.classList.add("scale-75", "opacity-0");
-
+  content.classList.remove("scale-100","opacity-100");
+  content.classList.add("scale-75","opacity-0");
   setTimeout(() => {
     modal.classList.add("hidden");
     modal.classList.remove("flex");
@@ -183,6 +175,7 @@ function copyPix() {
   alert("Código Pix copiado!");
 }
 
+/* Partículas */
 for (let i = 0; i < 25; i++) {
   let glow = document.createElement("div");
   glow.className = "glow";
@@ -192,19 +185,17 @@ for (let i = 0; i < 25; i++) {
   document.body.appendChild(glow);
 }
 
-const names = ["Rafael", "Lucas", "Marcos", "João", "Pedro", "Gabriel"];
-const amounts = ["500 Robux", "1200 Robux", "3000 Robux"];
+/* Notificação fake */
+const names = ["Rafael","Lucas","Marcos","João","Pedro","Gabriel"];
+const amounts = ["500 Robux","1200 Robux","3000 Robux"];
 
 function showNotification() {
   const notification = document.getElementById("notification");
-  const randomName = names[Math.floor(Math.random() * names.length)];
-  const randomAmount = amounts[Math.floor(Math.random() * amounts.length)];
+  const randomName = names[Math.floor(Math.random()*names.length)];
+  const randomAmount = amounts[Math.floor(Math.random()*amounts.length)];
   notification.innerHTML = "🛒 " + randomName + " acabou de comprar " + randomAmount + "!";
   notification.style.display = "block";
-
-  setTimeout(() => {
-    notification.style.display = "none";
-  }, 4000);
+  setTimeout(() => { notification.style.display = "none"; }, 4000);
 }
 
 setInterval(showNotification, 8000);
