@@ -7,20 +7,25 @@
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-/* Fundo animado */
+/* Fundo com sua imagem */
 body {
-  background: linear-gradient(-45deg, #0f172a, #111827, #1e293b, #0f172a);
-  background-size: 400% 400%;
-  animation: gradientBG 12s ease infinite;
+  background: url('background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+  color: white;
+  overflow-x: hidden;
 }
 
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Camada escura para melhorar leitura */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: -1;
 }
 
-/* Partículas */
+/* Partículas douradas */
 .glow {
   position: fixed;
   width: 4px;
@@ -42,25 +47,18 @@ body {
   position: fixed;
   bottom: 20px;
   left: 20px;
-  background: #111827;
-  color: white;
+  background: rgba(17,24,39,0.95);
   padding: 12px 18px;
   border-radius: 12px;
-  box-shadow: 0 0 15px rgba(250,204,21,0.5);
+  box-shadow: 0 0 20px rgba(250,204,21,0.6);
   display: none;
-  animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 </style>
 </head>
 
-<body class="text-white">
+<body>
 
-<header class="bg-gray-900 shadow-lg p-6 text-center">
+<header class="bg-black bg-opacity-70 p-6 text-center shadow-lg">
   <h1 class="text-3xl font-bold text-yellow-400">BUXSTORE</h1>
 </header>
 
@@ -70,28 +68,28 @@ body {
 
 <section class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8 px-6">
 
-  <div class="bg-gray-800 p-6 rounded-2xl text-center shadow-xl">
+  <div class="bg-black bg-opacity-70 p-6 rounded-2xl text-center shadow-xl">
     <h3 class="text-xl font-bold mb-4">500 Robux</h3>
     <p class="mb-4">R$ 7,00</p>
-    <button onclick="openPix()" class="bg-yellow-400 text-black px-4 py-2 rounded-xl font-bold">Pagar com Pix</button>
+    <button onclick="openPix()" class="bg-yellow-400 text-black px-4 py-2 rounded-xl font-bold hover:scale-105 transition">Pagar com Pix</button>
   </div>
 
-  <div class="bg-gray-800 p-6 rounded-2xl text-center shadow-xl">
+  <div class="bg-black bg-opacity-70 p-6 rounded-2xl text-center shadow-xl">
     <h3 class="text-xl font-bold mb-4">1200 Robux</h3>
     <p class="mb-4">R$ 22,90</p>
-    <button onclick="openPix()" class="bg-yellow-400 text-black px-4 py-2 rounded-xl font-bold">Pagar com Pix</button>
+    <button onclick="openPix()" class="bg-yellow-400 text-black px-4 py-2 rounded-xl font-bold hover:scale-105 transition">Pagar com Pix</button>
   </div>
 
-  <div class="bg-gray-800 p-6 rounded-2xl text-center shadow-xl">
+  <div class="bg-black bg-opacity-70 p-6 rounded-2xl text-center shadow-xl">
     <h3 class="text-xl font-bold mb-4">3000 Robux</h3>
     <p class="mb-4">R$ 68,00</p>
-    <button onclick="openPix()" class="bg-yellow-400 text-black px-4 py-2 rounded-xl font-bold">Pagar com Pix</button>
+    <button onclick="openPix()" class="bg-yellow-400 text-black px-4 py-2 rounded-xl font-bold hover:scale-105 transition">Pagar com Pix</button>
   </div>
 
 </section>
 
 <!-- Modal Pix -->
-<div id="pixModal" class="fixed inset-0 bg-black bg-opacity-70 hidden flex items-center justify-center">
+<div id="pixModal" class="fixed inset-0 bg-black bg-opacity-80 hidden flex items-center justify-center">
   <div class="bg-gray-900 p-8 rounded-2xl text-center max-w-sm">
     <h3 class="text-xl font-bold mb-4">Pagamento via Pix</h3>
     <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020126580014BR.GOV.BCB.PIX0136f897d3b2-432b-4d96-a881-321949f4f2a352040000530398654047.005802BR5925Eduardo Gabriel de Andrad6009SAO PAULO621405109ImWx845Dx63046070" class="mx-auto mb-4">
@@ -104,19 +102,16 @@ body {
   </div>
 </div>
 
-<!-- Contatos -->
 <footer class="text-center mt-16 mb-10 space-y-2">
   <p>🔥 TikTok: rbxbaratooofc</p>
   <p>✉️ Email: Robuxbarato.gmail</p>
   <p>🎮 Discord: rbxbarato</p>
-  <p class="text-gray-400 mt-4">© 2026 BuxStore</p>
+  <p class="text-gray-300 mt-4">© 2026 BuxStore</p>
 </footer>
 
-<!-- Notificação Fake -->
 <div id="notification"></div>
 
 <script>
-// Abrir / Fechar modal
 function openPix() {
   document.getElementById("pixModal").classList.remove("hidden");
 }
@@ -130,7 +125,7 @@ function copyPix() {
   alert("Código Pix copiado!");
 }
 
-// Partículas
+/* Partículas */
 for (let i = 0; i < 25; i++) {
   let glow = document.createElement("div");
   glow.className = "glow";
@@ -140,7 +135,7 @@ for (let i = 0; i < 25; i++) {
   document.body.appendChild(glow);
 }
 
-// Notificação fake
+/* Notificação Fake */
 const names = ["Rafael", "Lucas", "Marcos", "João", "Pedro", "Gabriel"];
 const amounts = ["500 Robux", "1200 Robux", "3000 Robux"];
 
