@@ -1,204 +1,196 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BuxStore</title>
 
-<!-- Fonte Gamer -->
+<title>BUXSTORE</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
 
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-body {
-  background-image: url("./background.jpg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  color: white;
-  overflow-x: hidden;
+
+body{
+background-image:url("fundo.jpg");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.75);
-  z-index: -1;
+.card{
+background:linear-gradient(145deg,#0f172a,#020617);
+border:1px solid rgba(255,255,255,0.1);
 }
 
-/* Partículas */
-.glow {
-  position: fixed;
-  width: 4px;
-  height: 4px;
-  background: #facc15;
-  border-radius: 50%;
-  box-shadow: 0 0 10px #facc15, 0 0 20px #facc15;
-  animation: float 10s linear infinite;
-  opacity: 0.7;
+.modal-bg{
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(5px);
 }
 
-@keyframes float {
-  from { transform: translateY(100vh); opacity: 0; }
-  to { transform: translateY(-10vh); opacity: 1; }
-}
-
-/* Notificação */
-#notification {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  background: rgba(17,24,39,0.95);
-  padding: 12px 18px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(250,204,21,0.6);
-  display: none;
-}
 </style>
+
 </head>
 
-<body>
+<body class="text-white">
 
-<header class="bg-black bg-opacity-70 p-6 text-center shadow-lg">
-  <h1 class="text-4xl font-extrabold text-yellow-400 tracking-widest"
-      style="font-family: 'Orbitron', sans-serif;">
-      BUXSTORE
-  </h1>
+<header class="text-center py-10">
+
+<h1 class="text-5xl text-yellow-400 tracking-widest" style="font-family:'Orbitron',sans-serif;">
+BUXSTORE
+</h1>
+
+<p class="text-gray-300 mt-2">
+Robux baratos e entrega rápida
+</p>
+
 </header>
-
-<section class="text-center py-12">
-  <h2 class="text-4xl font-extrabold">Compre Robux Instantaneamente ⚡</h2>
-</section>
 
 <section class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 px-6">
 
-  <!-- CARD 1 -->
-  <div class="relative bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl text-center shadow-2xl border border-yellow-400/30 hover:scale-105 transition duration-300 overflow-hidden">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Roblox_Logo_2022.svg"
-         class="absolute top-4 right-4 w-12 opacity-20">
-    <h3 class="text-xl font-bold mb-2">500 Robux</h3>
-    <p class="text-yellow-400 text-lg font-semibold mb-2">R$ 7,00</p>
-    <p class="text-sm text-gray-400 mb-4">⭐ 347 avaliações</p>
-    <button onclick="openPix()" class="bg-yellow-400 text-black px-4 py-2 rounded-xl font-bold hover:scale-110 transition">
-      Pagar com Pix
-    </button>
-  </div>
+<!-- 500 ROBUX -->
+<div class="card p-6 rounded-2xl text-center shadow-xl relative overflow-hidden hover:scale-105 transition">
 
-  <!-- CARD 2 -->
-  <div class="relative bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl text-center shadow-2xl border border-yellow-400/30 hover:scale-105 transition duration-300 overflow-hidden">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Roblox_Logo_2022.svg"
-         class="absolute top-4 right-4 w-12 opacity-20">
-    <h3 class="text-xl font-bold mb-2">1200 Robux</h3>
-    <p class="text-yellow-400 text-lg font-semibold mb-2">R$ 22,90</p>
-    <p class="text-sm text-gray-400 mb-4">⭐ 892 avaliações</p>
-    <button onclick="openPix()" class="bg-yellow-400 text-black px-4 py-2 rounded-xl font-bold hover:scale-110 transition">
-      Pagar com Pix
-    </button>
-  </div>
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Roblox_Logo_2022.svg"
+class="absolute top-4 right-4 w-14 opacity-20">
 
-  <!-- CARD 3 -->
-  <div class="relative bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl text-center shadow-2xl border border-yellow-400/30 hover:scale-105 transition duration-300 overflow-hidden">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Roblox_Logo_2022.svg"
-         class="absolute top-4 right-4 w-12 opacity-20">
-    <h3 class="text-xl font-bold mb-2">3000 Robux</h3>
-    <p class="text-yellow-400 text-lg font-semibold mb-2">R$ 68,00</p>
-    <p class="text-sm text-gray-400 mb-4">⭐ 1.247 avaliações</p>
-    <button onclick="openPix()" class="bg-yellow-400 text-black px-4 py-2 rounded-xl font-bold hover:scale-110 transition">
-      Pagar com Pix
-    </button>
-  </div>
+<h3 class="text-xl font-bold mb-2">500 Robux</h3>
+
+<p class="text-yellow-400 text-lg mb-1">R$ 7,00</p>
+
+<p class="text-gray-400 text-sm mb-4">⭐ 347 avaliações</p>
+
+<button onclick="openPix('00020126580014BR.GOV.BCB.PIX0136f897d3b2-432b-4d96-a881-321949f4f2a352040000530398654047.005802BR5925Eduardo Gabriel de Andrad6009SAO PAULO621405109ImWx845Dx63046070')" 
+class="bg-yellow-400 text-black px-5 py-2 rounded-xl font-bold hover:scale-110 transition">
+Pagar com Pix
+</button>
+
+</div>
+
+
+<!-- 1200 ROBUX -->
+<div class="card p-6 rounded-2xl text-center shadow-xl relative overflow-hidden hover:scale-105 transition">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Roblox_Logo_2022.svg"
+class="absolute top-4 right-4 w-14 opacity-20">
+
+<h3 class="text-xl font-bold mb-2">1200 Robux</h3>
+
+<p class="text-yellow-400 text-lg mb-1">R$ 22,90</p>
+
+<p class="text-gray-400 text-sm mb-4">⭐ 892 avaliações</p>
+
+<button onclick="openPix('00020126580014BR.GOV.BCB.PIX0136f897d3b2-432b-4d96-a881-321949f4f2a3520400005303986540522.905802BR5925Eduardo Gabriel de Andrad6009SAO PAULO62140510cmWdSUTHLZ63043B5A')" 
+class="bg-yellow-400 text-black px-5 py-2 rounded-xl font-bold hover:scale-110 transition">
+Pagar com Pix
+</button>
+
+</div>
+
+
+<!-- 3000 ROBUX -->
+<div class="card p-6 rounded-2xl text-center shadow-xl relative overflow-hidden hover:scale-105 transition">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Roblox_Logo_2022.svg"
+class="absolute top-4 right-4 w-14 opacity-20">
+
+<h3 class="text-xl font-bold mb-2">3000 Robux</h3>
+
+<p class="text-yellow-400 text-lg mb-1">R$ 68,00</p>
+
+<p class="text-gray-400 text-sm mb-4">⭐ 1247 avaliações</p>
+
+<button onclick="openPix('SEU_PIX_AQUI')" 
+class="bg-yellow-400 text-black px-5 py-2 rounded-xl font-bold hover:scale-110 transition">
+Pagar com Pix
+</button>
+
+</div>
 
 </section>
 
-<!-- Modal Pix -->
-<div id="pixModal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center transition-opacity duration-300">
-  <div id="pixContent"
-       class="bg-gray-900 p-8 rounded-2xl text-center max-w-sm transform scale-75 opacity-0 transition-all duration-300">
 
-    <h3 class="text-xl font-bold mb-4">Pagamento via Pix</h3>
+<!-- MODAL PIX -->
 
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020126580014BR.GOV.BCB.PIX0136f897d3b2-432b-4d96-a881-321949f4f2a352040000530398654047.005802BR5925Eduardo Gabriel de Andrad6009SAO PAULO621405109ImWx845Dx63046070"
-         class="mx-auto mb-4 rounded-lg">
+<div id="pixModal" class="fixed inset-0 hidden items-center justify-center modal-bg">
 
-    <textarea id="pixCode" class="w-full text-black p-2 rounded text-xs">
-00020126580014BR.GOV.BCB.PIX0136f897d3b2-432b-4d96-a881-321949f4f2a352040000530398654047.005802BR5925Eduardo Gabriel de Andrad6009SAO PAULO621405109ImWx845Dx63046070
-    </textarea>
+<div id="pixContent" class="bg-gray-900 p-8 rounded-2xl text-center transform scale-75 opacity-0 transition duration-300">
 
-    <button onclick="copyPix()" class="bg-yellow-400 text-black px-4 py-2 mt-3 rounded-xl font-bold hover:scale-105 transition">
-      Copiar Código Pix
-    </button>
+<h2 class="text-xl font-bold mb-4">
+Pague com Pix
+</h2>
 
-    <br><br>
-    <button onclick="closePix()" class="text-red-400">Fechar</button>
+<img id="pixImage" class="mx-auto mb-4 rounded-lg">
 
-  </div>
+<textarea id="pixCode" readonly class="w-full h-20 text-black p-2 rounded"></textarea>
+
+<button onclick="copyPix()" class="mt-4 bg-green-500 px-4 py-2 rounded font-bold">
+Copiar código Pix
+</button>
+
+<br><br>
+
+<button onclick="closePix()" class="text-red-400">
+Fechar
+</button>
+
 </div>
 
-<footer class="text-center mt-16 mb-10 space-y-2">
-  <p>🔥 TikTok: rbxbaratooofc</p>
-  <p>✉️ Email: Robuxbarato.gmail</p>
-  <p>🎮 Discord: rbxbarato</p>
-  <p class="text-gray-300 mt-4">© 2026 BuxStore</p>
+</div>
+
+
+<footer class="text-center mt-16 text-gray-400 text-sm pb-10">
+
+<p>TikTok: rbxbaratooofc 🔥</p>
+<p>Email: Robuxbarato.gmail ✉️</p>
+<p>Discord: rbxbarato</p>
+
 </footer>
 
-<div id="notification"></div>
 
 <script>
-function openPix() {
-  const modal = document.getElementById("pixModal");
-  const content = document.getElementById("pixContent");
-  modal.classList.remove("hidden");
-  modal.classList.add("flex");
-  setTimeout(() => {
-    content.classList.remove("scale-75","opacity-0");
-    content.classList.add("scale-100","opacity-100");
-  }, 50);
+
+function openPix(codigo){
+
+document.getElementById("pixCode").value = codigo
+
+document.getElementById("pixImage").src =
+"https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="+encodeURIComponent(codigo)
+
+const modal = document.getElementById("pixModal")
+const content = document.getElementById("pixContent")
+
+modal.classList.remove("hidden")
+modal.classList.add("flex")
+
+setTimeout(()=>{
+content.classList.remove("scale-75","opacity-0")
+content.classList.add("scale-100","opacity-100")
+},100)
+
 }
 
-function closePix() {
-  const modal = document.getElementById("pixModal");
-  const content = document.getElementById("pixContent");
-  content.classList.remove("scale-100","opacity-100");
-  content.classList.add("scale-75","opacity-0");
-  setTimeout(() => {
-    modal.classList.add("hidden");
-    modal.classList.remove("flex");
-  }, 300);
+function closePix(){
+
+const modal=document.getElementById("pixModal")
+modal.classList.add("hidden")
+
 }
 
-function copyPix() {
-  let copyText = document.getElementById("pixCode");
-  copyText.select();
-  document.execCommand("copy");
-  alert("Código Pix copiado!");
+function copyPix(){
+
+const copyText=document.getElementById("pixCode")
+
+copyText.select()
+copyText.setSelectionRange(0,99999)
+
+document.execCommand("copy")
+
+alert("Código Pix copiado!")
+
 }
 
-/* Partículas */
-for (let i = 0; i < 25; i++) {
-  let glow = document.createElement("div");
-  glow.className = "glow";
-  glow.style.left = Math.random() * 100 + "vw";
-  glow.style.animationDuration = (5 + Math.random() * 10) + "s";
-  glow.style.opacity = Math.random();
-  document.body.appendChild(glow);
-}
-
-/* Notificação fake */
-const names = ["Rafael","Lucas","Marcos","João","Pedro","Gabriel"];
-const amounts = ["500 Robux","1200 Robux","3000 Robux"];
-
-function showNotification() {
-  const notification = document.getElementById("notification");
-  const randomName = names[Math.floor(Math.random()*names.length)];
-  const randomAmount = amounts[Math.floor(Math.random()*amounts.length)];
-  notification.innerHTML = "🛒 " + randomName + " acabou de comprar " + randomAmount + "!";
-  notification.style.display = "block";
-  setTimeout(() => { notification.style.display = "none"; }, 4000);
-}
-
-setInterval(showNotification, 8000);
 </script>
 
 </body>
